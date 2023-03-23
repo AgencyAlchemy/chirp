@@ -20,7 +20,7 @@ import { Redis } from "@upstash/redis";
 // Create a new ratelimiter, that allows 3 requests per 10 seconds
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(3, "10 s"),
+  limiter: Ratelimit.slidingWindow(3, "1 m"),
   analytics: true
 });
 
@@ -61,7 +61,7 @@ export const postsRouter = createTRPCRouter({
 
   create: privateProcedure.input(
     z.object({
-    content: z.string().emoji().min(1).max(280),
+    content: z.string().emoji("Only emojis are allowed!").min(1).max(280),
   })
   )
   .mutation(async ({ctx, input}) => {
