@@ -17,7 +17,7 @@ const CreatePostWizard = () => {
 
   const { user } = useUser();
 
-  const [input, setInput] = useState()
+  const [input, setInput] = useState("")
 
   const ctx = api.useContext();
 
@@ -44,11 +44,12 @@ const CreatePostWizard = () => {
     <input
       placeholder="Type some emojis"
       className="bg-transparent grow outline-none"
+      type="text"
       value={input}
-      onChange={(e) => {setInput(e.target.value)}}
+      onChange={(e) => setInput(e.target.value)}
       disabled={isPosting}
     />
-    <button onClick={(e) => mutate( {content: input})}>Post</button>
+    <button onClick={() => mutate({ content: input })}>Post</button>
   </div>
   );
 }
