@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   
   const user = useUser();
 
-  const {data} = api.posts.getAll.useQuery();
+  const { data } = api.posts.getAll.useQuery();
 
   return (
     <>
@@ -24,7 +24,9 @@ const Home: NextPage = () => {
         {!!user.isSignedIn && <SignOutButton />}
     </div>
     <div>
-      {data?.map((post) => (<div key={post.id}>{post.content}</div>))}
+      {data?.map((post) => (
+        <div key={post.id}>{post.content}</div>
+        ))}
     </div>
       </main>
     </>
