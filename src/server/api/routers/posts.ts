@@ -43,7 +43,7 @@ const addUserDataToPosts = async (posts: Post[]) => {
 // Create a new ratelimiter, that allows 3 requests per 1 minute
 const ratelimit = new Ratelimit({
   redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(3, "1 m"),
+  limiter: Ratelimit.slidingWindow(10, "10 s"),
   analytics: true,
 });
 

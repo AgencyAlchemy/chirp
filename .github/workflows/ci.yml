@@ -1,0 +1,31 @@
+name: CI
+
+on: [push, pull_request]
+
+env:
+  DATABASE_URL: "https://fake.com"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Typecheck with TypeScript
+        run: npm run typecheck
+        env:
+          MY_VARIABLE: ${{ env.MY_VARIABLE }}
+
+      - name: Lint with ESLint
+        run: npm run lint
+        env:
+          MY_VARIABLE: ${{ env.MY_VARIABLE }}
