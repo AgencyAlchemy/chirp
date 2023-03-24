@@ -16,7 +16,7 @@ export const PostView = (props: PostWithUser) => {
     <div key={post.id} className="border-b border-slate-400 p-4 gap-3 flex">
       <Image
         className="w-14 h-14 rounded-full"
-        src={author.profilePictureUrl}
+        src={author.profileImageUrl}
         alt="Profile image"
         width={56}
         height={56}
